@@ -9,57 +9,84 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-selector/iron-multi-selectable.html">
-<link rel="import" href="iron-accordion.html">
+<link rel="import" href="../iron-collapse/iron-collapse.html">
 
 <!--
-For creating accordion like layout. Use it with `<iron-accordion>` please.
-Note that this thing has *s*, and the child doesn't have *s*.
-I know this is confusing, but you need to blame it to the creator of `<paper-tabs>` and `<paper-tab>`.
-
-One more thing, this element extends `Polymer.IronMultiSelectableBehavior`, so you can add `multi` attribute if you want it.
+For creating collapsable content with clickable header.
+First child element will become the header.
 
 Example:
 
-    <iron-accordions>
-      <iron-accordion>
-        <h2>This is the Header</h2>
-        <p>This is a paragraph</p>
-        <p>And more paragraph here</p>
-      </iron-accordion>
-      <iron-accordion>
-        <div>
-          <h2>Compound Header</h2>
-          <p>Yeah</p>
-        </div>
-        <p>I don't like writing a documentation</p>
-        <p>YEAH!!!</p>
-      </iron-accordion>
-    <iron-accordions>
+    <iron-accordion>
+      <h2>This is the Header</h2>
+      <p>This is a paragraph</p>
+      <p>And more paragraph here</p>
+    </iron-accordion>
+
+Example using div:
+
+    <iron-accordion>
+      <div>
+        <h2>Compound Header</h2>
+        <p>Yeah</p>
+      </div>
+      <p>I don't like writing a documentation</p>
+      <p>YEAH!!!</p>
+    </iron-accordion>
 
 @demo demo/index.html
 @hero hero.svg
 -->
 
-<dom-module id="iron-accordions">
+<dom-module id="iron-accordion">
   <template>
     <style>
       :host {
         display: block;
         box-sizing: border-box;
       }
+
+      #header {
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      #content {
+        overflow: hidden;
+      }
+
     </style>
 
-    <content></content>
+    <div id="header">
+      <content select="*:first-child"></content>
+    </div>
+    <iron-collapse id="content" opened="{{opened}}">
+      <content></content>
+    </iron-collapse>
   </template>
 
   <script>
     Polymer({
-      is: 'iron-accordions',
+      is: 'iron-accordion',
 
-      behaviors: [
-        Polymer.IronMultiSelectableBehavior
-      ],
+      properties: {
+        /**
+         * Set opened to true to show the collapse element and to false to hide it.
+         *
+         * @attribute opened
+         */
+        opened: {
+         type: Boolean,
+         value: false,
+         notify: true,
+         reflectToAttribute: true
+        }
+      },
+
+      listeners: {
+        'header.tap': '_onHeaderTap',
+        'focus': '_onFocus'
+      },
 
       // Element Lifecycle
 
@@ -70,9 +97,6 @@ Example:
         //
         // This is the point where you should make modifications to the DOM (when
         // necessary), or kick off any processes the element wants to perform.
-        this.selectable = 'iron-accordion';
-        this.activateEvent = 'iron-accordion-header-tap';
-        this.selectedAttribute = 'opened';
       },
 
       attached: function() {
@@ -89,7 +113,35 @@ Example:
         // removed from a document.
         //
         // Use this to clean up anything you did in `attached`.
+      },
+
+      // Element Behavior
+
+      /**
+       * Listener to #header tap. And fire custom events.
+       */
+      _onHeaderTap: function(e) {
+        this.toggle();
+        this.fire('iron-accordion-header-tap');
+      },
+
+      /**
+       * Toggle the opened state.
+       *
+       * @method toggle
+       */
+      toggle: function() {
+        this.$.content.toggle();
+      },
+
+      show: function() {
+        this.$.content.show();
+      },
+
+      hide: function() {
+        this.$.content.hide();
       }
+
     });
   </script>
 </dom-module>
