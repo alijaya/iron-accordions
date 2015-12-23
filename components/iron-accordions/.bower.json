@@ -1,0 +1,38 @@
+{
+  "name": "iron-accordions",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "An element providing a solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "iron-accordions.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/alijaya/iron-accordions/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.5",
+    "iron-selector": "PolymerElements/iron-selector#~1.0.8"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^3.4.0"
+  },
+  "_release": "01705ceb89",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "01705ceb89f23bbd85555507d760413403163548"
+  },
+  "_source": "git://github.com/alijaya/iron-accordions.git",
+  "_target": "master",
+  "_originalSource": "alijaya/iron-accordions",
+  "_direct": true
+}
