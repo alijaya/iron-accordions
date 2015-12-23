@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>iron-accordions Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../iron-accordions.html">
+    <style>
+      iron-accordion img {
+        display: block;
+        float: left;
+      }
+    </style>
+  </head>
+  <body unresolved>
+
+    <iron-accordions id="ali">
+      <iron-accordion>
+        <h2>Long Paragraph Ahead</h2> <!-- This thing gonna be clicked -->
+        <!-- This thing below is hidden -->
+        <p>Of course you can! Everything in this room is eatable, even I'm eatable! But that is called 'cannibalism', my dear children, and is in fact frowned upon in most societies.</p>
+        <p>Have you not met Will Turner? He's noble, heroic, terrific soprano! Worth at least four. Maybe 3 and a half. And did I happen to mention? He's in love with a girl. Due to be married. Betrothed. Dividing him from her and her from him would only be half as cruel as actually allowing tham to be joined together in holy matrimony, eh?</p>
+        <p>No. If we don't have a key, we can't open whatever it unlocks, so what purpose would be served in finding whatever needs to be unlocked without first having found the key that unlocks it?</p>
+        <p>Darling, I am truly unhappy to have to tell you this, but through an unfortunate and entirely unforseeable series of circumstances that have nothing whatsoever to do with me...poor Will was press-ganged into Davy Jones's crew.</p>
+        <p>Ladies! Will you please shut it? Listen to me. Yes, I lied to you. No, I don't love you. Of course it makes you look fat. I've never been to Brussels. It is pronounced 'egregious'. By the way, no, I've never met Pizzaro but I love his pies. And all of this pales to utter insignificance in light of the fact that my ship is once again gone. Savvy?</p>
+      </iron-accordion>
+      <iron-accordion>
+        <img src="http://lorempixel.com/g/400/200/cats/1" /> <!-- This thing gonna be clicked -->
+        <!-- This thing below is hidden -->
+        <img src="http://lorempixel.com/g/200/100/cats/2" />
+        <img src="http://lorempixel.com/g/200/100/cats/3" />
+        <img src="http://lorempixel.com/g/200/100/cats/4" />
+        <img src="http://lorempixel.com/g/200/100/cats/5" />
+      </iron-accordion>
+      <iron-accordion>
+        <div>
+          <img src="http://lorempixel.com/g/100/100/cats/6" style="margin-right:1em;" />
+          <h2>Compound</h2>
+          <p>as header</p>
+        </div> <!-- This thing gonna be clicked -->
+        <!-- This thing below is hidden -->
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <iron-accordions>
+          <iron-accordion>
+            <h3>Memento</h3>
+            <p>Some detail</p>
+          </iron-accordion>
+          <iron-accordion>
+            <h3>Inception</h3>
+            <p>Some detail</p>
+          </iron-accordion>
+          <iron-accordion>
+            <h3>Interstellar</h3>
+            <p>Some detail</p>
+          </iron-accordion>
+        </iron-accordions>
+      </iron-accordion>
+    </iron-accordions>
+
+  </body>
+</html>
