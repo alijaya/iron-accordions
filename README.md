@@ -28,6 +28,25 @@ See [iron-accordion](#iron-accordion) for more information about `iron-accordion
 
 `iron-accordions` extends the behavior of `Polymer.IronMultiSelectableBehavior`, so it could have `selected` attribute, `multi`, etc.
 
+Example:
+
+``` html
+<iron-accordions multi selected="1">
+  <iron-accordion>
+    <h2>You can open the content more than one</h2>
+    <p>Some content</p>
+  </iron-accordion>
+  <iron-accordion>
+    <h2>This thing is opened by default</h2>
+    <p>Some content</p>
+  </iron-accordion>
+  <iron-accordion>
+    <h2>Some another header</h2>
+    <p>Some another content</p>
+  </iron-accordion>
+</iron-accordions>
+```
+
 ## &lt;iron-accordion&gt;
 
 `iron-accordion` is using [`iron-collapse`](https://github.com/PolymerElements/iron-collapse) for collapsing the content.
