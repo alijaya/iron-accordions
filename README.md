@@ -1,61 +1,76 @@
-# iron-accordions
+[*Demo and API Docs*](http://alijaya.github.io/iron-accordions/components/iron-accordions/)
 
-An element providing a starting point for your own reusable Polymer elements.
+# &lt;iron-accordions&gt;
 
+`iron-accordions` is for layouting purpose. Used together with `iron-accordion`. *(Note the s)*
 
-## Dependencies
+Example:
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+``` html
+<iron-accordions>
+  <iron-accordion>
+    <h2>This is the Header</h2>
+    <p>This is a paragraph</p>
+    <p>And more paragraph here</p>
+  </iron-accordion>
+  <iron-accordion>
+    <div>
+      <h2>Compound Header</h2>
+      <p>Yeah</p>
+    </div>
+    <p>I don't like writing a documentation</p>
+    <p>YEAH!!!</p>
+  </iron-accordion>
+<iron-accordions>
+```
 
-    npm install -g bower
+See [iron-accordion](#iron-accordion) for more information about `iron-accordion`.
 
-Then, go ahead and download the element's dependencies:
+`iron-accordions` extends the behavior of `Polymer.IronMultiSelectableBehavior`, so it could have `selected` attribute, `multi`, etc.
 
-    bower install
+Example:
 
+``` html
+<iron-accordions multi selected="1">
+  <iron-accordion>
+    <h2>You can open the content more than one</h2>
+    <p>Some content</p>
+  </iron-accordion>
+  <iron-accordion>
+    <h2>This thing is opened by default</h2>
+    <p>Some content</p>
+  </iron-accordion>
+  <iron-accordion>
+    <h2>Some another header</h2>
+    <p>Some another content</p>
+  </iron-accordion>
+</iron-accordions>
+```
 
-## Playing With Your Element
+## &lt;iron-accordion&gt;
 
-If you wish to work on your element in isolation, we recommend that you use
-[Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
-bower dependencies in line. You can install it via:
+`iron-accordion` is using [`iron-collapse`](https://github.com/PolymerElements/iron-collapse) for collapsing the content.
+Currently, it will collapsing vertically.
 
-    npm install -g polyserve
+The first child element of `iron-accordion` will be clickable button to reveal its content. *So it's advised not to include button or another interactive element for the first child element.*
 
-And you can run it via:
+Example:
 
-    polyserve
+``` html
+<iron-accordion>
+  <h2>This is clickable element to reveal the content</h2>
+  <p>All the other thing beside the first element is the content</p>
+  <button>Like this button</button>
+  <span>Or this span</span>
+</iron-accordion>
+```
 
-Once running, you can preview your element at
-`http://localhost:8080/components/iron-accordions/`, where `iron-accordions` is the name of the directory containing it.
+Bad Usage Example:
 
-
-## Testing Your Element
-
-Simply navigate to the `/test` directory of your element to run its tests. If
-you are using Polyserve: `http://localhost:8080/components/iron-accordions/test/`
-
-### web-component-tester
-
-The tests are compatible with [web-component-tester](https://github.com/Polymer/web-component-tester).
-Install it via:
-
-    npm install -g web-component-tester
-
-Then, you can run your tests on _all_ of your local browsers via:
-
-    wct
-
-#### WCT Tips
-
-`wct -l chrome` will only run tests in chrome.
-
-`wct -p` will keep the browsers alive after test runs (refresh to re-run).
-
-`wct test/some-file.html` will test only the files you specify.
-
-
-## Yeoman support
-
-If you'd like to use Yeoman to scaffold your element that's possible. The official [`generator-polymer`](https://github.com/yeoman/generator-polymer) generator has a [`seed`](https://github.com/yeoman/generator-polymer#seed) subgenerator.
+``` html
+<iron-accordion>
+  <button>If you use interactive thing like this</button>
+  <h2>It's really bad :(</h2>
+  <p>Please don't do it...</p>
+</iron-accordion>
+```
