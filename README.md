@@ -24,7 +24,7 @@ Example:
 <iron-accordions>
 ```
 
-See [iron-accordion]() for more information about `iron-accordion`.
+See [iron-accordion](#iron-accordion) for more information about `iron-accordion`.
 
 `iron-accordions` extends the behavior of `Polymer.IronMultiSelectableBehavior`, so it could have `selected` attribute, `multi`, etc.
 
