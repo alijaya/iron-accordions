@@ -2,17 +2,23 @@
   "name": "iron-accordions",
   "version": "1.0.6",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Ali Jaya Meilio Lie <alijayameilio@gmail.com>"
   ],
   "description": "An element providing a solution to no problem in particular.",
   "keywords": [
-    "web-component",
+    "web-components",
     "polymer",
-    "seed"
+    "accordions",
+    "accordion",
+    "layout"
   ],
   "main": "iron-accordions.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/alijaya/iron-accordions/",
+  "homepage": "http://alijaya.github.io/iron-accordions/components/iron-accordions/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alijaya/iron-accordions.git"
+  },
   "ignore": [
     "/.*",
     "/test/"
