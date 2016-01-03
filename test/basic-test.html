@@ -25,46 +25,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <test-fixture id="iron-accordions-fixture">
       <template>
         <iron-accordions>
-          <h2>iron-accordions</h2>
+          <iron-accordion>
+            <h3>Memento</h3>
+            <p>Some detail</p>
+          </iron-accordion>
+          <iron-accordion>
+            <h3>Inception</h3>
+            <p>Some detail</p>
+          </iron-accordion>
+          <iron-accordion>
+            <h3>Interstellar</h3>
+            <p>Some detail</p>
+          </iron-accordion>
         </iron-accordions>
       </template>
     </test-fixture>
 
     <script>
-      suite('<iron-accordions>', function() {
-
-        var myEl;
-
-        setup(function() {
-          myEl = fixture('iron-accordions-fixture');
-        });
-
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Dimitri Glazkov');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
-        });
-
-        test('says hello', function() {
-          assert.equal(myEl.sayHello(), 'iron-accordions says, Hello World!');
-
-          var greetings = myEl.sayHello('greetings Earthlings');
-          assert.equal(greetings, 'iron-accordions says, greetings Earthlings');
-        });
-
-        test('fires lasers', function(done) {
-          myEl.addEventListener('iron-accordions-lasers', function(event) {
-            assert.equal(event.detail.sound, 'Pew pew!');
-            done();
+      describe('Test <iron-accordions>', function() {
+        describe('<iron-accordions> selected attribute', function() {
+          var myEl;
+          beforeEach(function() {
+            myEl = fixture('iron-accordions-fixture');
           });
-          myEl.fireLasers();
-        });
 
-        test('distributed children', function() {
-          var els = myEl.getContentChildren();
-          assert.equal(els.length, 1, 'one distributed node');
-          assert.equal(els[0], myEl.querySelector('h2'), 'content distributed correctly');
-        });
+          it('should not select anything at the first time', function() {
+            expect(myEl.selected).to.not.exist;
+          });
 
+          it('should open first element when assigned the selected to 0', function() {
+            expect(myEl.items[0].opened).to.be.false;
+            expect(myEl.items[1].opened).to.be.false;
+            expect(myEl.items[2].opened).to.be.false;
+
+            myEl.selected = 0;
+            expect(myEl.items[0].opened).to.be.true;
+            expect(myEl.items[1].opened).to.be.false;
+            expect(myEl.items[2].opened).to.be.false;
+          });
+
+          it('should select third element when third element header is clicked', function() {
+            expect(myEl.selected).to.not.equal(2);
+            expect(myEl.items[2].opened).to.be.false;
+
+            myEl.items[2].$.header.click();
+
+            expect(myEl.selected).to.equal(2);
+            expect(myEl.items[2].opened).to.be.true;
+          });
+        });
       });
     </script>
 
