@@ -9,15 +9,13 @@ Example:
 ``` html
 <iron-accordions>
   <iron-accordion>
-    <h2>This is the Header</h2>
+    <h2 header>This is the Header</h2>
     <p>This is a paragraph</p>
     <p>And more paragraph here</p>
   </iron-accordion>
   <iron-accordion>
-    <div>
-      <h2>Compound Header</h2>
-      <p>Yeah</p>
-    </div>
+    <h2 header>Compound Header</h2>
+    <p header>Yeah</p>
     <p>I don't like writing a documentation</p>
     <p>YEAH!!!</p>
   </iron-accordion>
@@ -52,13 +50,13 @@ Example:
 `iron-accordion` is using [`iron-collapse`](https://github.com/PolymerElements/iron-collapse) for collapsing the content.
 Currently, it will collapsing vertically.
 
-The first child element of `iron-accordion` will be clickable button to reveal its content. *So it's advised not to include button or another interactive element for the first child element.*
+The child element of `iron-accordion` with `[header]` attribute will be clickable button to reveal its content. *So it's advised not to include button or another interactive element for the header.*
 
 Example:
 
 ``` html
 <iron-accordion>
-  <h2>This is clickable element to reveal the content</h2>
+  <h2 header>This is clickable element to reveal the content</h2>
   <p>All the other thing beside the first element is the content</p>
   <button>Like this button</button>
   <span>Or this span</span>
@@ -69,7 +67,7 @@ Bad Usage Example:
 
 ``` html
 <iron-accordion>
-  <button>If you use interactive thing like this</button>
+  <button header>If you use interactive thing like this</button>
   <h2>It's really bad :(</h2>
   <p>Please don't do it...</p>
 </iron-accordion>
