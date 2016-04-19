@@ -29,7 +29,7 @@ See [iron-accordion](#iron-accordion) for more information about `iron-accordion
 Example:
 
 ``` html
-<iron-accordions multi selected="1">
+<iron-accordions multi selectedValue="[1]">
   <iron-accordion>
     <h2>You can open the content more than one</h2>
     <p>Some content</p>
@@ -44,6 +44,10 @@ Example:
   </iron-accordion>
 </iron-accordions>
 ```
+
+So if you want to init `iron-accordion` to be opened in the first time, you should set the property of `selected` from the `iron-accordions` (or `selectedValue` if `multi` is `true`).
+
+**Don't** give the attribute `opened` *manually* to the `iron-accordion` because the data model in `iron-accordions` can't detect it.
 
 ## &lt;iron-accordion&gt;
 
