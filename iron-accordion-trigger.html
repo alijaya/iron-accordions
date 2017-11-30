@@ -1,0 +1,56 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+For creating custom trigger.
+
+Example:
+
+    <iron-accordion>
+      <div header disable-header>
+        <h2>This is the Unclickable Header</h2>
+        <iron-accordion-trigger>Click Here</iron-accordion-trigger>
+      </div>
+      <p>This is a paragraph</p>
+      <p>And more paragraph here</p>
+      <iron-accordion-trigger>Close</iron-accordion-trigger>
+    </iron-accordion>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="iron-accordion-trigger">
+  <template>
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+    </style>
+
+    <slot></slot>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'iron-accordion-trigger',
+
+      ready: function() {
+        this.addEventListener('click', e => {
+          this.fire('iron-accordion-trigger');
+        });
+      }
+    });
+  </script>
+</dom-module>

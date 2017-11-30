@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 For creating collapsable content with clickable header.
-Child Element with `[header]` attribute will become the header.
+Child Element with `slot='header'` attribute will become the header.
 
 Example:
 
@@ -23,7 +23,7 @@ Example:
       <p>And more paragraph here</p>
     </iron-accordion>
 
-Example multiple:
+Example multiple (not recommended though):
 
     <iron-accordion>
       <h2 header>Compound Header</h2>
@@ -49,6 +49,10 @@ Example multiple:
         overflow: hidden;
       }
 
+      :host([disable-header]) #header {
+        cursor: inherit;
+      }
+
       #content {
         overflow: hidden;
       }
@@ -56,10 +60,10 @@ Example multiple:
     </style>
 
     <div id="header">
-      <content select="[header]"></content>
+      <slot name="header"></slot>
     </div>
     <iron-collapse id="content" opened="{{opened}}">
-      <content></content>
+      <slot></slot>
     </iron-collapse>
   </template>
 
@@ -77,39 +81,20 @@ Example multiple:
          type: Boolean,
          value: false,
          notify: true,
-         reflectToAttribute: true
-        }
-      },
+         reflectToAttribute: true,
+        },
 
-      listeners: {
-        'header.tap': '_onHeaderTap'
+        disableHeader: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+        },
       },
-
-      // Element Lifecycle
 
       ready: function() {
-        // `ready` is called after all elements have been configured, but
-        // propagates bottom-up. This element's children are ready, but parents
-        // are not.
-        //
-        // This is the point where you should make modifications to the DOM (when
-        // necessary), or kick off any processes the element wants to perform.
-      },
-
-      attached: function() {
-        // `attached` fires once the element and its parents have been inserted
-        // into a document.
-        //
-        // This is a good place to perform any work related to your element's
-        // visual state or active behavior (measuring sizes, beginning animations,
-        // loading resources, etc).
-      },
-
-      detached: function() {
-        // The analog to `attached`, `detached` fires when the element has been
-        // removed from a document.
-        //
-        // Use this to clean up anything you did in `attached`.
+        this.$.header.addEventListener('click', this._onHeaderTrigger.bind(this));
+        this.$.header.addEventListener('iron-accordion-trigger', this._onTrigger.bind(this));
+        this.$.content.addEventListener('iron-accordion-trigger', this._onTrigger.bind(this));
       },
 
       // Element Behavior
@@ -117,9 +102,25 @@ Example multiple:
       /**
        * Listener to #header tap. And fire custom events.
        */
-      _onHeaderTap: function(e) {
+      _onHeaderTrigger: function(e) {
+        if (!this.disableHeader) {
+          this.trigger();
+        }
+      },
+
+      _onTrigger: function(e) {
+        e.stopPropagation();
+        this.trigger();
+      },
+
+      /**
+       * Simulate trigger
+       *
+       * @method trigger
+       */
+      trigger: function() {
         this.toggle();
-        this.fire('iron-accordion-header-tap');
+        this.fire('iron-accordion-trigger');
       },
 
       /**
