@@ -1,0 +1,79 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-selector/iron-multi-selectable.html">
+
+<!--
+[*Github Repo*](https://github.com/alijaya/iron-accordions)
+
+For creating accordion like layout. Use it with `<iron-accordion>` please.
+Note that this thing has *s*, and the child doesn't have *s*.
+I know this is confusing, but you need to blame it to the creator of `<paper-tabs>` and `<paper-tab>`.
+
+One more thing, this element extends `Polymer.IronMultiSelectableBehavior`, so you can add `multi` attribute if you want it.
+
+Example:
+
+    <iron-accordions>
+      <iron-accordion>
+        <h2 header>This is the Header</h2>
+        <p>This is a paragraph</p>
+        <p>And more paragraph here</p>
+      </iron-accordion>
+      <iron-accordion>
+        <h2 header>Compound Header</h2>
+        <p header>Yeah</p>
+        <p>I don't like writing a documentation</p>
+        <p>YEAH!!!</p>
+      </iron-accordion>
+    <iron-accordions>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="iron-accordions">
+  <template>
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <slot></slot>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'iron-accordions',
+
+      behaviors: [
+        Polymer.IronMultiSelectableBehavior
+      ],
+
+      hostAttributes: {
+        role: 'tree',
+      },
+
+      ready: function() {
+        /**
+         * Overriden from Polymer.IronSelectableBehavior
+         */
+        this.selectable = 'iron-accordion';
+        this.activateEvent = 'iron-accordion-trigger';
+        this.selectedAttribute = 'opened';
+
+        this.addEventListener('iron-accordion-trigger', e => e.stopPropagation());
+      },
+    });
+  </script>
+</dom-module>
